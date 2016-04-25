@@ -19,7 +19,7 @@ class ParticipollHack:
          vote is not "E" and \
          vote is not "F":
             print("Error: vote has to be an uppercase letter between A and F")
-            return
+            return 42
 
         for i in range(count):
             participantID = randint(1, 100000)
@@ -31,6 +31,7 @@ class ParticipollHack:
             if verbos:
                 print("...sent vote {}".format(i+1))
         print("successfully sent vote [{}] {} times".format(vote, count))
+        return 0
 
     def send_comment(self, comment="foo ba", count=1):
         for i in range(count):
@@ -51,7 +52,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print("Welcome to ParticipollHack")
     print("published under CC BY-NC-SA 3.0 in 2016")
-
+    error = 0
     if args.u:
         part = ParticipollHack(userID=args.u)
     else:
@@ -59,14 +60,16 @@ if __name__ == '__main__':
 
     if not args.n:
         print("Vote [{}] will be sent 100 times to participoll".format(args.vote))
-        part.send_vote(vote=args.vote, verbos=bool(args.v))
+        error =part.send_vote(vote=args.vote, verbos=bool(args.v))
     else:
         print("Vote [{}] will be sent {} times to participoll".format(args.vote, args.n))
-        part.send_vote(vote=args.vote, count=args.n, verbos=bool(args.v))
+        error =part.send_vote(vote=args.vote, count=args.n, verbos=bool(args.v))
 
-    if args.p:
+    if args.p and not error:
         part.send_comment(comment="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         part.send_comment(comment="y0u h4v3 b33n h4ck3d")
         part.send_comment(comment="the code was published at www.github.com/shiaky/participollhack/")
         part.send_comment(comment="stay tuned")
         part.send_comment(comment="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+    print("Exit ParticipollHack ... Bye")
