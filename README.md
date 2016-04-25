@@ -1,5 +1,6 @@
 # ParticipollHack
 
+```
 usage: partycipollhack.py [-h] [-n N] [-v] [-p] [-u U] vote
 
 positional arguments:
@@ -12,6 +13,6 @@ optional arguments:
   -p          post poser-comment in chat
   -u U        userID of the participoll.com user, by default it is set to
               dbs.participoll.com [2453]
-
+```
 
 
