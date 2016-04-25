@@ -29,7 +29,7 @@ class ParticipollHack:
                 print("Error while sending vote :/")
                 break
             if verbos:
-                print("...sent vote {}.time".format(i+1))
+                print("...sent vote {}".format(i+1))
         print("successfully sent vote [{}] {} times".format(vote, count))
 
     def send_comment(self, comment="foo ba", count=1):
