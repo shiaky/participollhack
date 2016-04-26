@@ -12,12 +12,7 @@ class ParticipollHack:
         self.postComment = "/wp-content/themes/participoll/alternativeCall.php?action=run_ajax&fn=log_comment&userID={0}&comment={1}"
 
     def send_vote(self, vote ="A", count = 1000, verbos=False):
-        if vote is not "A" and \
-         vote is not "B" and \
-         vote is not "C" and \
-         vote is not "D" and \
-         vote is not "E" and \
-         vote is not "F":
+        if vote not in ["A", "B", "C", "D", "E", "F"]:
             print("Error: vote has to be an uppercase letter between A and F")
             return 42
 
@@ -27,7 +22,7 @@ class ParticipollHack:
             r = requests.post(postURL)
             if r.status_code != 200:
                 print("Error while sending vote :/")
-                break
+                return 1337
             if verbos:
                 print("...sent vote {}".format(i+1))
         print("successfully sent vote [{}] {} times".format(vote, count))
