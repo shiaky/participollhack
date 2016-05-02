@@ -1,7 +1,7 @@
 # ParticipollHack
 
 ```
-usage: participollhack.py [-h] [-n N] [-v] [-p] [-u U] vote
+usage: participollhack_async.py [-h] [-n N] [-v] [-p] [-u U] vote
 
 positional arguments:
   vote        the vote [A,B,C,D,E,F]
